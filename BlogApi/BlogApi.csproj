@@ -25,4 +25,11 @@
     <Folder Include="Infrastructure" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="WebApp\ViewModels\CreatePostViewModel.cs" />
+    <Compile Remove="Application\Dtos\CreatePostDto.cs" />
+    <Compile Remove="Application\Dtos\UpdatePostDto.cs" />
+    <Compile Remove="WebApp\ViewModels\UpdatePostViewModel.cs" />
+  </ItemGroup>
+
 </Project>

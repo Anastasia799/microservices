@@ -3,7 +3,7 @@ using AutoMapper;
 using BlogApi.Dtos;
 using BlogApi.Extentions;
 using BlogApi.Interfaces;
-using BlogApi.ViewModels;
+using BlogApi.WebApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -23,7 +23,13 @@ public class PostController : Controller
         _mapper = mapper;
         _logger = logger;
     }
-    
+
+    [HttpGet]
+    public IActionResult Create() {
+        return View();
+    }
+
+    [HttpPost]
     public async Task<IActionResult> Create(PostViewModel? viewModel) {
         try {
             if (viewModel is null)
@@ -43,6 +49,13 @@ public class PostController : Controller
         }
     } 
     
+    [HttpGet]
+    public async Task<IActionResult> Update(Guid postId) {
+        var post = await _postService.GetByIdAsync(postId);
+        return View(post);
+    }
+    
+    [HttpPost]
     public async Task<IActionResult> Update(PostViewModel? viewModel) {
         try {
             if (viewModel is null)
@@ -62,6 +75,7 @@ public class PostController : Controller
         }
     }  
     
+    [HttpDelete]
     public async Task<IActionResult> Delete(PostViewModel? viewModel) {
         try {
             if (viewModel is null)
@@ -81,6 +95,7 @@ public class PostController : Controller
         }
     } 
     
+    [HttpGet]
     public async Task<IActionResult> GetById(PostViewModel? viewModel) {
         try {
             if (viewModel is null)

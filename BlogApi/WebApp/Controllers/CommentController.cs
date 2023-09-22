@@ -3,7 +3,7 @@ using AuthApi.Infrastructure.Extentions;
 using AutoMapper;
 using BlogApi.Dtos;
 using BlogApi.Interfaces;
-using BlogApi.ViewModels;
+using BlogApi.WebApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -22,7 +22,13 @@ public class CommentController : Controller
         _mapper = mapper;
         _logger = logger;
     }
+    
+    [HttpGet]
+    public IActionResult Create() {
+        return View();
+    }
 
+    [HttpPost]
     public async Task<IActionResult> Create(CommentViewModel? viewModel) {
         try {
             if (viewModel is null)

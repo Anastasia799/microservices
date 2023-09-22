@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using BlogApi.Dtos;
 using BlogApi.Models;
-using BlogApi.ViewModels;
+using BlogApi.WebApp.ViewModels;
 
-namespace BlogApi.AutoMapperConfigurations;
+namespace BlogApi.WebApp.AutoMapperConfigurations;
 
 public class PostProfile : Profile
 {
